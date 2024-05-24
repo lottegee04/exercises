@@ -1,3 +1,5 @@
+from student import Student
+
 def linear_search(students, target_id):
     for student in students:
         if student.id == target_id:
@@ -5,15 +7,17 @@ def linear_search(students, target_id):
     return None
 
 def binary_search(students, target_id):
-    left,right = (0,len(students)-1)
-    middle = len(students)//2
+    left,right = (0,len(students))
+    
     for cycle in range(len(students)//2):
-        if students[middle] == target_id:
+        middle = (left+right)//2
+        if students[middle].id == target_id:
             return students[middle]
-        elif middle > target_id:
+        elif students[middle].id > target_id:
             right = middle
-            middle = right //2
-        elif middle < target_id:
+        elif students[middle].id < target_id:
             left = middle
-            middle = left + left//2
     return None
+#helped with solution
+#tip: doe eerst het meest logische (dus zonder -1 etc.) focus eerst op de niet grenzen
+binary_search([Student(x) for x in range(100)],66)
